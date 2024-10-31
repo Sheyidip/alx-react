@@ -5,24 +5,24 @@ let count = 0;
 
 // Function to update the counter
 function updateCounter() {
-    count += 1; // Increment the count
-    $('#count').text(`${count} clicks on the button`); // Update the displayed count
+    count += 1;
+    document.getElementById('count').textContent = `${count} clicks on the button`;
 }
 
 // Create a debounced version of the updateCounter function
 const debouncedUpdateCounter = _.debounce(updateCounter, 300);
 
-// Document ready function to create elements and set up event listeners
-$(document).ready(function() {
-    // Create a button and a paragraph element
-    const button = $('<button>Click me!</button>');
-    const countParagraph = $('<p id="count">0 clicks on the button</p>');
+// Add event listener when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const button = document.createElement('button');
+    button.textContent = 'Click me!';
 
-    // Append elements to the body
-    $('body').append(countParagraph);
-    $('body').append(button);
+    const countParagraph = document.createElement('p');
+    countParagraph.id = 'count';
+    countParagraph.textContent = '0 clicks on the button';
 
-    // Bind the debounced function to the button click event
-    button.on('click', debouncedUpdateCounter);
+    document.body.appendChild(countParagraph);
+    document.body.appendChild(button);
+
+    button.addEventListener('click', debouncedUpdateCounter);
 });
-
