@@ -1,21 +1,22 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'production', // Set mode to production
-    entry: './src/index.js', // Entry point
-    output: {
-        filename: 'bundle.js', // Output filename
-        path: path.resolve(__dirname, 'public'), // Output directory
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/, // Transpile JavaScript files
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader', // If you need to use Babel
-                },
-            },
-        ],
-    },
+  mode: 'production',
+  entry: './js/dashboard_main.js', // Ensure this path is correct
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'public'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+    ],
+  },
 };
+
