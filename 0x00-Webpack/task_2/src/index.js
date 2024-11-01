@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 */
 
-import './main.css';
+import '../css/main.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   const button = document.createElement('button');
