@@ -1,4 +1,4 @@
-import $ from 'jquery';
+/*import $ from 'jquery';
 import _ from 'lodash';
 
 let count = 0;
@@ -28,3 +28,23 @@ document.addEventListener('DOMContentLoaded', function() {
     button.addEventListener('click', debouncedUpdateCounter);
 });
 
+*/
+
+import './main.css';
+
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.createElement('button');
+  button.textContent = 'Click Me!';
+  document.body.appendChild(button);
+  
+  const counterText = document.createElement('div');
+  counterText.className = 'counter'; // Add the counter class here
+  counterText.textContent = 'Counter: 0';
+  document.body.appendChild(counterText);
+
+  let count = 0;
+  button.addEventListener('click', () => {
+    count += 1;
+    counterText.textContent = `Counter: ${count}`; // Update the counter text
+  });
+});
