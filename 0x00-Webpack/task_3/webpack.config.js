@@ -24,7 +24,6 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Holberton Dashboard',
-      template: 'src/index.html', // Create your own template if needed
       filename: 'index.html'
     })
   ],
