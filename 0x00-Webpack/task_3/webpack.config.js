@@ -1,55 +1,36 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
-  entry: './src/index.js',
+  mode: 'development',
+  entry: {
+    header: './task_3/modules/header/header.js',
+    body: './task_3/modules/body/body.js',
+    footer: './task_3/modules/footer/footer.js'
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'public'),
+    clean: true // Automatically clean the output directory before each build
   },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].[ext]',
-            },
-          },
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: true,
-                quality: 65,
-              },
-              // Additional options for other image formats
-              optipng: {
-                enabled: false, // Disable if you're using pngquant
-              },
-              pngquant: {
-                quality: [0.65, 0.90],
-                speed: 4,
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-              webp: {
-                quality: 75,
-              },
-            },
-          },
-        ],
-      },
-    ],
+  devtool: 'inline-source-map', // Enable inline source mapping
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    port: 8564,
+    open: true // Automatically open the browser
   },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Holberton Dashboard',
+      template: 'src/index.html', // Create your own template if needed
+      filename: 'index.html'
+    })
+  ],
   optimization: {
-    minimize: true, // Minimization to avoid asset size warnings
-  },
+    splitChunks: {
+      chunks: 'all', // Split chunks for better optimization
+    }
+  }
 };
