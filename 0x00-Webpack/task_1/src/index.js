@@ -16,6 +16,7 @@ const debouncedUpdateCounter = _.debounce(updateCounter, 300);
 document.addEventListener('DOMContentLoaded', function() {
     const button = document.createElement('button');
     button.textContent = 'Click me!';
+    button.setAttribute('aria-label', 'Click to increment counter');
 
     const countParagraph = document.createElement('p');
     countParagraph.id = 'count';
@@ -26,3 +27,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     button.addEventListener('click', debouncedUpdateCounter);
 });
+
