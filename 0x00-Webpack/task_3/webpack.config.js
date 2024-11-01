@@ -1,3 +1,4 @@
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -5,9 +6,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    header: './task_3/modules/header/header.js',
-    body: './task_3/modules/body/body.js',
-    footer: './task_3/modules/footer/footer.js'
+    header: './modules/header/header.js',
+    body: './modules/body/body.js',
+    footer: './modules/footer/footer.js'
   },
   output: {
     filename: '[name].bundle.js',
@@ -16,7 +17,7 @@ module.exports = {
   },
   devtool: 'inline-source-map', // Enable inline source mapping
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
+    contentBase: path.join(__dirname, 'public/'),
     port: 8564,
     open: true // Automatically open the browser
   },
